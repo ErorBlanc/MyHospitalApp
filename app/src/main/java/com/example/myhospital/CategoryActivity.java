@@ -14,7 +14,7 @@ public class CategoryActivity extends AppCompatActivity {
         // Кнопка назад
         findViewById(R.id.btnBackCategory).setOnClickListener(v -> finish());
 
-        // 1. Блок "Симптомы"
+        // 1. Блок Симптомы
         setupClick(R.id.cardSymptomFeelBad, "Терапевт");
         setupClick(R.id.cardSymptomOrvi, "Терапевт");
         setupClick(R.id.cardSymptomTemp, "Терапевт");
@@ -22,19 +22,16 @@ public class CategoryActivity extends AppCompatActivity {
         setupClick(R.id.cardSymptomHeadache, "Невролог");
         setupClick(R.id.cardSymptomStomach, "Гастроэнтеролог");
 
-        // 2. Блок "Помощь специалиста"
-        // Передаем пустую строку "", чтобы AppointmentActivity показал всех врачей
+        // 2. Блок Помощь специалиста
         setupClick(R.id.cardSpecTherapist, "");
 
-        // Для остальных передаем конкретную специализацию
         setupClick(R.id.cardSpecSurgeon, "Стоматолог");
         setupClick(R.id.cardSpecOphthalmologist, "Офтальмолог");
         setupClick(R.id.cardSpecPsychologist, "Психолог");
 
-        // 3. Блок "Прочее" (Анализы и справки)
-        // Пока тоже будут открывать общий список (или можешь сделать для них отдельные экраны позже)
+        // 3. Блок Прочее Анализы и справки
         setupClick(R.id.cardActionAnalysis, "Лаборатория");
-        setupClick(R.id.cardActionCertificates, "Лаборатория");
+        setupClick(R.id.cardActionCertificates, "Справки");
     }
 
     private void setupClick(int viewId, String spec) {
@@ -43,7 +40,6 @@ public class CategoryActivity extends AppCompatActivity {
                     CategoryActivity.this,
                     AppointmentActivity.class
             );
-            // Передаем фильтр (или пустую строку) на следующий экран
             intent.putExtra("SPECIALIZATION", spec);
             startActivity(intent);
         });

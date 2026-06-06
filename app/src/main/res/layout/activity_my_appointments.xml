@@ -29,11 +29,11 @@
             android:layout_marginStart="16dp"/>
     </androidx.appcompat.widget.Toolbar>
 
-    <ListView
-        android:id="@+id/listViewHistory"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHistory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:divider="#E8F5E9"
-        android:dividerHeight="8dp"/>
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp"/>
 </LinearLayout>

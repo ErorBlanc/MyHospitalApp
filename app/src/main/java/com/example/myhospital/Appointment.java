@@ -14,5 +14,5 @@ public class Appointment {
     public String specialization;
     public String date;
     public String time;
-    public String status; // "upcoming" или "completed"
+    public String status;
 }

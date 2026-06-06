@@ -34,7 +34,6 @@ public class TimeSelectionActivity extends AppCompatActivity {
         String docName = getIntent().getStringExtra("DOC_NAME");
         String docSpec = getIntent().getStringExtra("DOC_SPEC");
 
-        // ИСПРАВЛЕНИЕ 1: Добавлена точка с запятой в конце!
         int userId = getSharedPreferences("MyHospital", MODE_PRIVATE).getInt("userId", 1);
 
         TextView tvName = findViewById(R.id.tvSelectedDoctorName);
@@ -48,15 +47,12 @@ public class TimeSelectionActivity extends AppCompatActivity {
         tvName.setText(docName);
         tvSpec.setText(docSpec);
 
-        // Устанавливаем текущую дату
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         selectedDate = sdf.format(cal.getTime());
 
-        // ИСПРАВЛЕНИЕ 2: Передаем docSpec, чтобы приложение знало, врач это или Лаборатория
         checkDayAndUpdateUI(cal, docSpec);
 
-        // Слушатель изменения даты в календаре
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             Calendar selected = Calendar.getInstance();
             selected.set(year, month, dayOfMonth);
@@ -69,7 +65,28 @@ public class TimeSelectionActivity extends AppCompatActivity {
             int checkedId = chipGroup.getCheckedChipId();
             if (checkedId != -1) {
                 selectedTime = ((Chip) findViewById(checkedId)).getText().toString();
-                saveAppointment(userId, docId, docName, docSpec);
+
+                Executors.newSingleThreadExecutor().execute(() -> {
+                    AppDatabase db = AppDatabase.getInstance(this);
+
+                    Appointment duplicate = db.appointmentDao().checkDuplicate(docId, selectedDate, selectedTime);
+
+                    runOnUiThread(() -> {
+                        if (duplicate != null) {
+                            Toast.makeText(this, "Извините, это время уже занято!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            new androidx.appcompat.app.AlertDialog.Builder(this)
+                                    .setTitle("Подтверждение записи")
+                                    .setMessage("Записаться к специалисту " + docName + " на " + selectedDate + " в " + selectedTime + "?")
+                                    .setPositiveButton("Да", (dialog, which) -> {
+                                        saveAppointment(userId, docId, docName, docSpec);
+                                    })
+                                    .setNegativeButton("Отмена", null)
+                                    .show();
+                        }
+                    });
+                });
+
             } else {
                 Toast.makeText(this, "Выберите время", Toast.LENGTH_SHORT).show();
             }
@@ -78,16 +95,13 @@ public class TimeSelectionActivity extends AppCompatActivity {
         findViewById(R.id.btnBackTime).setOnClickListener(v -> finish());
     }
 
-    // ИСПРАВЛЕНИЕ 3: Вернули логику графика (2/2 для врачей, Пн-Сб для Лаборатории)
     private void checkDayAndUpdateUI(Calendar date, String docSpec) {
         boolean isWorkingDay;
 
         if ("Лаборатория".equals(docSpec)) {
-            // Лаборатория работает каждый день кроме воскресенья
             int dayOfWeek = date.get(Calendar.DAY_OF_WEEK);
             isWorkingDay = (dayOfWeek != Calendar.SUNDAY);
         } else {
-            // Обычные врачи работают по графику 2 через 2
             int dayOfYear = date.get(Calendar.DAY_OF_YEAR);
             isWorkingDay = (dayOfYear + docId) % 4 < 2;
         }

@@ -1,52 +1,36 @@
 package com.example.myhospital;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Executors;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAppointmentsActivity extends AppCompatActivity {
+
+    private HistoryViewModel historyViewModel;
+    private HistoryAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_appointments);
 
-        // Кнопка назад
         findViewById(R.id.btnBackHistory).setOnClickListener(v -> finish());
 
-        ListView listView = findViewById(R.id.listViewHistory);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewHistory);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         int userId = getSharedPreferences("MyHospital", MODE_PRIVATE).getInt("userId", 1);
+        historyViewModel = new ViewModelProvider(this).get(HistoryViewModel.class);
 
-        Executors.newSingleThreadExecutor().execute(() -> {
-            AppDatabase db = AppDatabase.getInstance(this);
-            // Получаем ВСЕ записи пользователя из базы (метод уже есть в твоем AppointmentDao)
-            List<Appointment> appointments = db.appointmentDao().getAppointmentsForUser(userId);
-
-            // Превращаем сложный объект Appointment в простой текст
-            List<String> displayList = new ArrayList<>();
-            for (Appointment a : appointments) {
-                String record = a.specialization + " • " + a.doctorName + "\n" + a.date + " в " + a.time;
-                displayList.add(record);
+        historyViewModel.getUserHistory(userId).observe(this, appointments -> {
+            if (adapter == null) {
+                adapter = new HistoryAdapter(appointments);
+                recyclerView.setAdapter(adapter);
+            } else {
+                adapter.notifyDataSetChanged();
             }
-
-            // Если записей нет
-            if (displayList.isEmpty()) {
-                displayList.add("У вас пока нет истории приемов.");
-            }
-
-            // Выводим на экран через стандартный адаптер Android (1 строчка текста на элемент)
-            runOnUiThread(() -> {
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                        this,
-                        android.R.layout.simple_list_item_1, // Встроенный шаблон Android!
-                        displayList
-                );
-                listView.setAdapter(adapter);
-            });
         });
     }
 }

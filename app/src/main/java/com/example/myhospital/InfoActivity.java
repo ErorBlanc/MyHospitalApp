@@ -16,10 +16,10 @@ public class InfoActivity extends AppCompatActivity {
 
         if ("analysis".equals(type)) {
             title.setText("Мои Анализы");
-            content.setText("• Общий анализ крови (Готов)\n• Анализ на витамины (В работе)\n• ПЦР-тест (Готов)");
+            content.setText("• Общий анализ крови \n• Анализ на витамины \n• ПЦР-тест");
         } else {
             title.setText("Мои Справки");
-            content.setText("• Справка в бассейн (Активна)\n• Выписка из карты (Архив)");
+            content.setText("• Справка в бассейн \n• Выписка из карты ");
         }
     }
 }

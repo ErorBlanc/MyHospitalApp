@@ -1,0 +1,31 @@
+package com.example.myhospital;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+public class ProfileFragment extends Fragment {
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        String name = getActivity().getSharedPreferences("MyHospital", Context.MODE_PRIVATE).getString("userName", "Пользователь");
+        ((TextView) view.findViewById(R.id.tvProfileName)).setText(name);
+
+        view.findViewById(R.id.btnLogout).setOnClickListener(v -> {
+            getActivity().getSharedPreferences("MyHospital", Context.MODE_PRIVATE).edit().clear().apply();
+            startActivity(new Intent(getActivity(), MainActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        });
+
+        return view;
+    }
+}

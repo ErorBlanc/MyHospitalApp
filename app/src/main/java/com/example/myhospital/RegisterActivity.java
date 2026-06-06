@@ -36,7 +36,6 @@ public class RegisterActivity extends AppCompatActivity {
             String phone = regPhone.getText().toString().trim();
             String password = regPassword.getText().toString().trim();
 
-            // Проверка что все поля заполнены
             if (fullName.isEmpty() || email.isEmpty() ||
                     phone.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this,
@@ -44,11 +43,9 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
-            // Работа с БД в отдельном потоке
             Executors.newSingleThreadExecutor().execute(() -> {
                 AppDatabase db = AppDatabase.getInstance(this);
 
-                // Проверяем не занят ли email
                 User existing = db.userDao().getUserByEmail(email);
 
                 if (existing != null) {
@@ -60,7 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Создаём нового пользователя
                 User newUser = new User();
                 newUser.fullName = fullName;
                 newUser.email = email;
@@ -70,17 +66,16 @@ public class RegisterActivity extends AppCompatActivity {
                 db.userDao().insert(newUser);
 
                 runOnUiThread(() -> {
-                    Toast.makeText(this,
-                            "Регистрация успешна!", Toast.LENGTH_SHORT).show();
-                    // Переходим на экран входа
-                    Intent intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    Toast.makeText(this, "Регистрация успешна!", Toast.LENGTH_SHORT).show();
+
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("REGISTERED_EMAIL", email);
+                    setResult(RESULT_OK, resultIntent);
+                    finish(); // Закрываем окно регистрации
                 });
             });
         });
 
-        // Кнопка "Уже есть аккаунт"
         tvBackToLogin.setOnClickListener(v -> {
             finish();
         });

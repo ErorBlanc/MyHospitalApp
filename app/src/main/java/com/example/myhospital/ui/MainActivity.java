@@ -1,17 +1,17 @@
-package com.example.myhospital;
+package com.example.myhospital.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.myhospital.R;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.textfield.TextInputEditText;
-
+import com.example.myhospital.data.AppDatabase;
+import com.example.myhospital.model.User;
 import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {

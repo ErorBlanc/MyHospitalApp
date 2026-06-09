@@ -1,10 +1,11 @@
-package com.example.myhospital;
+package com.example.myhospital.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.myhospital.R;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -23,7 +24,6 @@ public class HomeActivity extends AppCompatActivity {
             if (id == R.id.nav_home) {
                 loadFragment(new HomeFragment());
             } else if (id == R.id.nav_add) {
-                // Прямой переход на активность записи
                 startActivity(new Intent(this, CategoryActivity.class));
             } else if (id == R.id.nav_settings) {
                 loadFragment(new ProfileFragment());

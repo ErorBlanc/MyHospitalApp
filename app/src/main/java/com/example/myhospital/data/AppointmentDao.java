@@ -1,17 +1,19 @@
-package com.example.myhospital;
+package com.example.myhospital.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.myhospital.model.Appointment;
+
 import java.util.List;
 
 @Dao
 public interface AppointmentDao {
     @Insert
     void insert(Appointment appointment);
-
     @Query("SELECT * FROM appointments WHERE userId = :userId ORDER BY date DESC")
     LiveData<List<Appointment>> getAppointmentsForUser(int userId);
 

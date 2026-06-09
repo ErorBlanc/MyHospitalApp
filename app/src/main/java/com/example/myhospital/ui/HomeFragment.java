@@ -1,8 +1,10 @@
-package com.example.myhospital;
+package com.example.myhospital.ui;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import com.example.myhospital.data.AppDatabase;
+import com.example.myhospital.model.Appointment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import java.util.List;
 import java.util.concurrent.Executors;
+import com.example.myhospital.R;
 
 public class HomeFragment extends Fragment {
 
@@ -22,7 +25,6 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Подключаем наш новый XML
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         if (getActivity() != null) {
@@ -42,7 +44,6 @@ public class HomeFragment extends Fragment {
         tvUpcomingDetails = view.findViewById(R.id.tvUpcomingDetails);
         Button btnMainAppointment = view.findViewById(R.id.btnMainAppointment);
 
-        // Клики
         btnMainAppointment.setOnClickListener(v -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
 
         view.findViewById(R.id.cardQuickTemp).setOnClickListener(v -> openFilteredDocs("Терапевт"));

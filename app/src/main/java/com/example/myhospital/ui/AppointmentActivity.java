@@ -1,4 +1,4 @@
-package com.example.myhospital;
+package com.example.myhospital.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,10 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.myhospital.R;
+import com.example.myhospital.data.AppDatabase;
+import com.example.myhospital.model.Doctor;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;

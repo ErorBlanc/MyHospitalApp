@@ -1,4 +1,4 @@
-package com.example.myhospital;
+package com.example.myhospital.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
+import com.example.myhospital.R;
+import com.example.myhospital.model.Appointment;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
 

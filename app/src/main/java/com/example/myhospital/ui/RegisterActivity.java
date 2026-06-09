@@ -1,11 +1,13 @@
-package com.example.myhospital;
+package com.example.myhospital.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.myhospital.R;
+import com.example.myhospital.data.AppDatabase;
+import com.example.myhospital.model.User;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;

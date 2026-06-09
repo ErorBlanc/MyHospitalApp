@@ -1,4 +1,4 @@
-package com.example.myhospital;
+package com.example.myhospital.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.concurrent.Executors;
+import com.example.myhospital.R;
+import com.example.myhospital.data.AppDatabase;
+import com.example.myhospital.model.Appointment;
 
 public class TimeSelectionActivity extends AppCompatActivity {
 

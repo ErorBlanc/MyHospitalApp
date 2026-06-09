@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9FDF9"
+    android:background="@color/bg_screen"
     android:fitsSystemWindows="true">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:background="@color/bg_card"
         app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Выбор времени"
-                android:textColor="#1B4332"
+                android:textColor="@color/text_main"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -86,7 +86,7 @@
                             android:layout_height="wrap_content"
                             android:text="Доктор"
                             android:textStyle="bold"
-                            android:textColor="#1B4332"/>
+                            android:textColor="@color/text_main"/>
                         <TextView
                             android:id="@+id/tvSelectedDoctorSpec"
                             android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:text="Выберите дату"
                 android:textStyle="bold"
-                android:textColor="#1B4332"
+                android:textColor="@color/text_main"
                 android:layout_marginBottom="8dp"/>
 
             <CalendarView
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:text="Доступное время"
                 android:textStyle="bold"
-                android:textColor="#1B4332"
+                android:textColor="@color/text_main"
                 android:layout_marginBottom="12dp"/>
             <TextView
                 android:id="@+id/tvWorkStatus"
@@ -147,8 +147,8 @@
         android:layout_height="60dp"
         android:layout_margin="16dp"
         android:text="ПОДТВЕРДИТЬ ЗАПИСЬ"
-        android:backgroundTint="#52B788"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/primary_green"
+        android:textColor="@color/bg_card"
         android:textStyle="bold"
         app:cornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"/>

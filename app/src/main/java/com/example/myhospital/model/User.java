@@ -1,4 +1,4 @@
-package com.example.myhospital;
+package com.example.myhospital.model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="24dp"
-    android:background="#F9FDF9">
+    android:background="@color/bg_screen">
 
     <ImageView
         android:layout_width="100dp"
@@ -20,7 +20,7 @@
         android:text="Имя Пользователя"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#1B4332"
+        android:textColor="@color/text_main"
         android:layout_marginTop="16dp"/>
 
     <Button
@@ -29,7 +29,7 @@
         android:layout_height="56dp"
         android:text="ВЫЙТИ ИЗ АККАУНТА"
         android:backgroundTint="#E57373"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/bg_card"
         android:layout_marginTop="40dp"
         app:cornerRadius="12dp"
         xmlns:app="http://schemas.android.com/apk/res-auto"/>

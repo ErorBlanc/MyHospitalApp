@@ -1,4 +1,4 @@
-package com.example.myhospital;
+package com.example.myhospital.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import com.example.myhospital.R;
 import androidx.fragment.app.Fragment;
 
 public class ProfileFragment extends Fragment {

@@ -1,15 +1,16 @@
-package com.example.myhospital;
+package com.example.myhospital.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
+import com.example.myhospital.R;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.myhospital.model.Doctor;
 
 import java.util.List;
 

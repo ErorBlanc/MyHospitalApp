@@ -1,8 +1,9 @@
-package com.example.myhospital;
+package com.example.myhospital.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.myhospital.R;
 
 public class CategoryActivity extends AppCompatActivity {
 

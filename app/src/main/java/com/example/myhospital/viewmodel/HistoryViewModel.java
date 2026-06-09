@@ -1,9 +1,14 @@
-package com.example.myhospital;
+package com.example.myhospital.viewmodel;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+
+import com.example.myhospital.data.AppDatabase;
+import com.example.myhospital.data.AppointmentDao;
+import com.example.myhospital.model.Appointment;
+
 import java.util.List;
 
 public class HistoryViewModel extends AndroidViewModel {

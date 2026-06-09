@@ -5,7 +5,7 @@
     style="@style/Widget.MaterialComponents.Chip.Choice"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:chipBackgroundColor="#FFFFFF"
+    app:chipBackgroundColor="@color/bg_card"
     app:chipStrokeColor="#52B788"
     app:chipStrokeWidth="1dp"
-    android:textColor="#1B4332" />
+    android:textColor="@color/text_main" />

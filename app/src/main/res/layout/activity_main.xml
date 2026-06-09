@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="32dp"
     android:gravity="center"
-    android:background="#F9FDF9">
+    android:background="@color/bg_screen">
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,7 +14,7 @@
         android:text="MyHospital"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:textColor="#1B4332"
+        android:textColor="@color/text_main"
         android:layout_marginBottom="40dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -29,7 +29,7 @@
             android:id="@+id/emailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#1B4332"/>
+            android:textColor="@color/text_main"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:textColor="#1B4332"/>
+            android:textColor="@color/text_main"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -57,8 +57,8 @@
         android:text="ВОЙТИ"
         android:textSize="16sp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="#52B788"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/primary_green"
+        android:textColor="@color/bg_card"
         app:cornerRadius="24dp"
         android:elevation="4dp"/>
 

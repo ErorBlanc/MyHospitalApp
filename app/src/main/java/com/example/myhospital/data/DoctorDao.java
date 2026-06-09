@@ -1,8 +1,11 @@
-package com.example.myhospital;
+package com.example.myhospital.data;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.myhospital.model.Doctor;
+
 import java.util.List;
 
 @Dao
